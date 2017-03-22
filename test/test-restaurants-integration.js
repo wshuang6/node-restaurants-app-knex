@@ -33,7 +33,7 @@ function seedRestaurantData() {
 function generateBoroughName() {
   const boroughs = [
     'Manhattan', 'Queens', 'Brooklyn', 'Bronx', 'Staten Island'];
-  return boroughs[Math.floor(Math.random() * boroughs.length)];
+  return boroughs[Math.floor(Math.random() * boroughs.length)]; 
 }
 
 // used to generate data to put in db
