@@ -2,3 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: Qx01n1zmK4ro8Fk1RSrKcCgPZknmwoTcyqNqDD/ey5YvKvD/NEctRtnnlZOSOXOCnFoCY+tiqgeJD29idjsU1Mzd6l8e+QZ3Z4k4wrUrkg5PpZvY+LCeRllV79rF9NYziEEDgRVR/YS2cBSdaxhjviYcz1AFQt50LSO9tV4tZMpc4nADZ9uaTzuMu7/v7NJU1hSeAXoSU1IFHmB264I8VxRUveBG9O+90Lxu3+mE3ffiQ9mVKceRuLMLD+qdrm/O+U1rM9vcr/DyWXJhL5qS32wyHTu089CEytQlPn/eOJcEVceytmC1Gwe2if1+TqvotLtZ5rWh7qVVCZ1YrxqMo9k0OGJJqn9I8NPuF8uryUCbS3F1hAGtR3fi0UKNOo5AgbB/8D1vLi+p17dF3x11PpB/Q4QvI58qryZ8OwCO9RdrNBQktOgCUCplbTGbDtGoyKJBUz0w6JXVrhG0Bftp3cMNBjVzcgxuXn3iL2nIwUiu/ugDeP2kx5/In1CPCaO/Nd7xrpx41bsYN+pFYkjCw+GGXA0b+YLjRrtKelkUGCtOzWTnwVxPSjU+2zE3XcVG7a9XkHLzTdeKo7VmAuLSU3gYIPCkz5vIu2UZxjMMiGuNQrkVvgU/iztgojeprAZ6O3A/X/S74YJodfSQyh+tYLBAlnNekafL2+ehpOhdg64=
+  app: infinite-dusk-54789
+  on:
+    repo: cklanac/node-restaurants-app-mongoose
