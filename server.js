@@ -24,26 +24,26 @@ app.get('/restaurants/:id', (req, res) => {
     .innerJoin('grades', 'restaurants.id', 'grades.restaurant_id')    
     .orderBy('date', 'desc')
     .then(function(results) {
-      const hydrated = {};
-      results.forEach(function (obj) {
-        if (!(obj.restaurantsid in hydrated)) {
-          hydrated[obj.restaurantsid] = {
-            name: obj.name,
-            cuisine: obj.cuisine,
-            borough: obj.borough,
-            restaurantsid: obj.restaurantsid,
-            address: obj.address,
-            grades: []
-          }
-        }
-        hydrated[obj.restaurantsid].grades.push({
-          gradesid: obj.gradesid,
-          grade: obj.grade, 
-          inspectionDate: obj.inspectionDate,
-          score: obj.score
-        })
-      });
-      return res.status(200).json(hydrated);
+      // const hydrated = {};
+      // results.forEach(function (obj) {
+      //   if (!(obj.restaurantsid in hydrated)) {
+      //     hydrated[obj.restaurantsid] = {
+      //       name: obj.name,
+      //       cuisine: obj.cuisine,
+      //       borough: obj.borough,
+      //       restaurantsid: obj.restaurantsid,
+      //       address: obj.address,
+      //       grades: []
+      //     }
+      //   }
+      //   hydrated[obj.restaurantsid].grades.push({
+      //     gradesid: obj.gradesid,
+      //     grade: obj.grade, 
+      //     inspectionDate: obj.inspectionDate,
+      //     score: obj.score
+      //   })
+      // });
+      // return res.status(200).json(hydrated);
     })
     .catch(err => {
       console.error(err);
@@ -51,4 +51,20 @@ app.get('/restaurants/:id', (req, res) => {
     })
 });
 
+app.post('/restaurants', (req, res) => {
+  const restrant = {
+    name: req.body.name,
+    cuisine: req.body.cuisine,
+    borough: req.body.borough
+  }
+  knex.insert(restrant)
+    .into('restaurants')
+    .returning('id')
+    .then(id => console.log(id))
+  // req.body.name
+  // req.body.cuisine
+  // req.body.borough
+  // var blah = [];
+
+})
 app.listen(process.env.PORT || 8080);
