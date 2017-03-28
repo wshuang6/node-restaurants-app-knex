@@ -52,19 +52,31 @@ app.get('/restaurants/:id', (req, res) => {
 });
 
 app.post('/restaurants', (req, res) => {
+  const reqbody = req.body;
   const restrant = {
-    name: req.body.name,
-    cuisine: req.body.cuisine,
-    borough: req.body.borough
-  }
+    name: reqbody.name,
+    cuisine: reqbody.cuisine,
+    borough: reqbody.borough
+  };
   knex.insert(restrant)
     .into('restaurants')
     .returning('id')
-    .then(id => console.log(id))
-  // req.body.name
-  // req.body.cuisine
-  // req.body.borough
-  // var blah = [];
+    .then(id => {
+      let _grades = [];
+      reqbody.grades.forEach(function (gradez) {_grades.push({
+        grade: gradez.grades,
+        score: gradez.score,
+        // restaurant_id: id
+        //restaurant_id integer REFERENCES users,
+      })})
+      knex.insert(_grades)
+        .into('grades')
+        .then();
+    })
+  req.body.name
+  req.body.cuisine
+  req.body.borough
+  var blah = [];
 
 })
 app.listen(process.env.PORT || 8080);
