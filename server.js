@@ -13,6 +13,6 @@ app.get('/restaurants', (req, res) => {
     .from('restaurants')
     .limit(10)
     .then(results => res.json(results));
-});
+  });
 
 app.listen(process.env.PORT || 8080);
