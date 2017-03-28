@@ -1,7 +1,27 @@
-exports.DATABASE_URL = process.env.DATABASE_URL ||
-                       global.DATABASE_URL ||
-                      'mongodb://localhost/restaurants-app';
-exports.TEST_DATABASE_URL = (
-	process.env.TEST_DATABASE_URL ||
-	'mongodb://localhost/test-restaurants-app');
-exports.PORT = process.env.PORT || 8080;
+module.exports = {
+    DEV: {
+        client: 'pg',
+        // ElephantSQL Config
+        // connection:'postgres://qvddfhyu:zyxUNHQzhz0Vd6J0lM@stampy.db.elephantsql.com:5432/qvddfhyu'
+        connection: {
+            user: 'dev',
+            password: 'letmein',
+            database: 'dev-restaurants-app'
+        },
+        // enable debug mode
+        // debug: true
+        
+    },
+    TEST: {
+        client: 'pg',
+        // ElephantSQL Config
+        // connection:'postgres://qvddfhyu:zyxUNHQzhz0Vd6J0lM@stampy.db.elephantsql.com:5432/qvddfhyu'
+        connection: {
+            user: 'dev',
+            password: 'letmein',
+            database: 'dev-restaurants-app'
+        }
+    },
+    PROD: {},
+    PORT: process.env.PORT || 8080
+}
